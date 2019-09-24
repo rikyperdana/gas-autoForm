@@ -56,7 +56,16 @@ The list below shall demonstrate various examples of schema you can define:
           return {value: index, label: val}
         })
       }
-    }}
+    }},
+    work_experience: {type: Object},
+    'work_experience.company': {type: String, label: 'Company Name'},
+    'work_experience.years': {type: Number, label: 'Years of experience'},
+    skills: {type: Array},
+    'skills.$': {type: String},
+    education: {type: Array},
+    'education.$': {type: Object},
+    'education.$.name': {type: String, label: 'School/University Name'},
+    'education.$.date': {type: Date, label: 'Graduation date'}
 
 ## Further Dev
 

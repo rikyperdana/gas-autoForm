@@ -15,7 +15,8 @@ This project is composed of functions that returns Mithril virtual DOMs, therefo
       action: console.log,
       schema: {
         name: {type: String},
-        age: {type: Number}
+        age: {type: Number},
+        date_of_birth: {type: Date}
       }
     }))
 This code will generate a form with `name` field in text and `number` field in number
@@ -31,13 +32,31 @@ This code will generate a form with `name` field in text and `number` field in n
 
 ## APIs
 ### Form options
-`id` : Name of the form to be created
+`id` : (required) Name of the form to be created. Ex: 'myForm'
 
-`action` : A function which shall be called after form submission with a callback. Ex: `function(res){return res}`
+`action` : (required) A function which shall be called after form submission with a callback. Ex: `function(res){return res}`
 
-`schema` : A schema-like object that shares similiarity to meteor autoform library as explained in below section.
+`schema` : (required) A schema-like object that shares similiarity to meteor autoform library as explained in below section.
 
 ### Schema rules
+A schema-object is an object of key:value pairs where the key represents the fieldName and the value represents the schema.
+The list below shall demonstrate various examples of schema you can define:
+
+    name: {type: String},
+    age: {type: Number},
+    birth: {type: Date}
+    address: {type: String, label: 'Home Adress'},
+    mobile: {type: Number, optional: true},
+    gender: {type: String, autoform: {type: 'select', options: function(){return [
+      {value: 'male', label: 'Male'}, {value: 'female', label: 'Female'}
+    ]}}},
+    occupation: {type: Number, optional: true, autoform: {
+      type: 'select', options: function(name, content){
+        return ['student', 'freelance', 'professional'].map(function(val, index){
+          return {value: index, label: val}
+        })
+      }
+    }}
 
 ## Further Dev
 

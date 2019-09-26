@@ -1,7 +1,9 @@
 # AutoForm for Google App Script
 
 [Script source code](https://script.google.com/d/1j2sCmpdtfmScueHcaxm2LtOk4ZJir_q5WEtGCYRjjYWQCpZZfD-GBwhr/edit?usp=sharing)
-File > Make a copy, then modify and publish one yourself
+File > Make a copy, then modify and publish one yourself.
+
+If you work on other platforms that uses JS, you can copy the whole autoForm function and it will just work.
 
 ## Introduction
 AutoForm is a remake of Meteor AutoForm like library that serves similiar purpose of generating a form which follow defined schemas.
@@ -16,7 +18,7 @@ This project is composed of functions that returns Mithril virtual DOMs, therefo
       schema: {
         name: {type: String},
         age: {type: Number},
-        date_of_birth: {type: Date}
+        dob: {type: Date, label: 'Date of birth'}
       }
     }))
 This code will generate a form with `name` field in text and `number` field in number
@@ -44,14 +46,14 @@ The list below shall demonstrate various examples of schema you can define:
 
     name: {type: String},
     age: {type: Number},
-    birth: {type: Date}
+    birth: {type: Date},
     address: {type: String, label: 'Home Adress'},
     mobile: {type: Number, optional: true},
     gender: {type: String, autoform: {type: 'select', options: function(){return [
       {value: 'male', label: 'Male'}, {value: 'female', label: 'Female'}
     ]}}},
     occupation: {type: Number, optional: true, autoform: {
-      type: 'select', options: function(name, content){
+      type: 'select', options: function(name, doc){
         return ['student', 'freelance', 'professional'].map(function(val, index){
           return {value: index, label: val}
         })
@@ -65,7 +67,18 @@ The list below shall demonstrate various examples of schema you can define:
     education: {type: Array},
     'education.$': {type: Object},
     'education.$.name': {type: String, label: 'School/University Name'},
-    'education.$.date': {type: Date, label: 'Graduation date'}
+    'education.$.date': {type: Date, label: 'Graduation date'},
+    excluded: {type: String, exclude: true},
+    just_info: {
+      type: String,
+      autoform: {type: 'hidden'},
+      autoValue: function(name, doc){return name}
+    },
+    hidden_field: {
+      type: String,
+      autoform: {type: 'hidden'},
+      autoValue: function(){return 'something'}
+    }
 
 ## Further Dev
 

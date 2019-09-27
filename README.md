@@ -63,6 +63,7 @@ The list below shall demonstrate various examples of schema you can define:
         })
       }
     }},
+    country_id: {type: String, regExp: '[A-Za-z]{3}'},
     work_experience: {type: Object},
     'work_experience.company': {type: String, label: 'Company Name'},
     'work_experience.years': {type: Number, label: 'Years of experience'},
@@ -82,7 +83,7 @@ The list below shall demonstrate various examples of schema you can define:
       type: String,
       autoform: {type: 'hidden'},
       autoValue: function(){return 'something'}
-    }
+    },
 ### Schema Descriptions
 `type`: Data type you want the field to be filled with. Supported types are `String`, `Number`, `Date`, `Object`, `Array`.
 
@@ -91,6 +92,8 @@ The list below shall demonstrate various examples of schema you can define:
 `optional`: Make the field optional. The submission will succeed either the field has value or not. A non-optional field will be marked with red colored asterix next to the label.
 
 `exclude`: Accepts Boolean value that represents the field value is to be included upon submission or not.
+
+`regExp`: A string of Regular Expression to check the field value against.
 
 `autoform`: A property to contain form-specific options which may contain below properties.
 

@@ -24,7 +24,7 @@ function autoForm(opts){return {view: function(){
               return [ // value conversion
                 ((type === String) && obj.value),
                 ((type === Number) && +(obj.value)),
-                ((type === Date) && new Date(obj.value))
+                ((type === Date) && Date(obj.value))
               ].filter(function(i){return !!i})[0]
             }}()
           )
@@ -44,14 +44,6 @@ function autoForm(opts){return {view: function(){
   };
   
   function inputTypes(name, schema){return {
-    file: function(){return m('.field',
-      attr.label(name, !schema.optional),
-      m('.file.has-name', m('label.file-label',
-        m('input.file-input', {type: 'file', name: name}),
-        m('span.file-cta', m('span.file-label', 'Choose a file')),
-        m('span.file-name', _.get(afState.form, [opts.id, name]))
-      ))
-    )},
     hidden: function(){return m('input.input', {
       type: 'hidden', name: !schema.exclude ? name : '',
       value: schema.autoValue(name, afState.form[opts.id])
@@ -127,6 +119,7 @@ function autoForm(opts){return {view: function(){
           value: _.get(afState.form, [opts.id, name]),
           required: !schema.optional,
           pattern: schema.regExp,
+          onchange: schema.autoRedraw && function(){},
           type: [
             [String, 'text'],
             [Number, 'number'],
@@ -146,8 +139,10 @@ function autoForm(opts){return {view: function(){
         [_.get(val, 'autoform.type') || 'standard']()
       }
     }),
-    m('.row', m('input.button.is-primary', {
-      type: 'submit', value: opts.submitButton || 'Submit'
+    m('.row', m('input.button', {
+      type: 'submit',
+      class: _.get(opts, 'submit.class') || 'is-primary',
+      value: _.get(opts, 'submit.value') || 'Submit'
     }))
   )
 }}}

@@ -6,7 +6,7 @@ File > Make a copy, then modify and publish one yourself.
 If you work on other platforms that uses JS, you can copy the whole autoForm function and it will just work.
 
 ## Introduction
-AutoForm is a remake of Meteor AutoForm like library that serves similiar purpose of generating a form which follow defined schemas.
+AutoForm is a remake of Meteor AutoForm library that serves similiar purpose of generating a form which follow defined schemas.
 You may take this project as a standalone boilerplate or copy some of it's parts to be included in your project or anything you see fit.
 This project is composed of functions that returns Mithril virtual DOMs, therefore understanding MithrilJS first is suggested. The `autoForm` function itself only contains of less than 150 lines of code, intededly made simple so you can freely modify this function.
 
@@ -114,6 +114,9 @@ The list below shall demonstrate various examples of schema you can define:
 
 `autoRedraw`: Accepts Boolean value that determine `redraw()` behavior of MithrilJS upon respective field `onchange` lifecycle. Useful when you want to redraw the whole form DOM as information changes.
 
-## Further Dev
+## Further Development
+- File input field, along with selected file information.
 
-## Known Issues
+## Caveat & Known Issues
+- Radio and Checkboxes are intetionally left excluded as jQuery is necessary to capture their values.
+- MithrilJS `redraw()` nature is to re-render the whole page at each execution. Thus `redraw()` execution outside the form element shall affect the form as well.

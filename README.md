@@ -19,7 +19,8 @@ This project is composed of functions that returns Mithril virtual DOMs, therefo
         name: {type: String},
         age: {type: Number},
         dob: {type: Date, label: 'Date of birth'}
-      }
+      },
+      submit: {value: 'Save', class: 'is-success'}
     }))
 This code will generate a form with `name` field in text and `number` field in number
 
@@ -39,6 +40,8 @@ This code will generate a form with `name` field in text and `number` field in n
 `action` : (required) A function which shall be called after form submission with a callback. Ex: `function(res){return res}`
 
 `schema` : (required) A schema-like object that shares similiarity to meteor autoform library as explained in below section.
+
+`submit`: (optional) An object that may contain `value` and `class` property to style the submit button.
 
 ### Schema rules
 A schema-object is an object of key:value pairs where the key represents the fieldName and the value represents the schema.

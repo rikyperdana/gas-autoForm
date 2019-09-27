@@ -1,0 +1,21 @@
+<script> window.addEventListener('load', function() {
+
+m.mount(document.body, {view: function(){
+  return m('.container', m(autoForm({
+    id: 'insertContact',
+    submitButton: 'Insert',
+    action: console.log,
+    schema: {
+      name: {type: String},
+      age: {type: Number},
+      birth: {type: Date},
+      country_code: {
+        type: String, regExp: '[A-Za-z]{3}',
+        autoform: {placeholder: '3 characters only'}
+      },
+      image: {type: String, autoform: {type: 'file'}}
+    }
+  })))
+}});
+
+});</script>

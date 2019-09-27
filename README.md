@@ -11,17 +11,18 @@ You may take this project as a standalone boilerplate or copy some of it's parts
 This project is composed of functions that returns Mithril virtual DOMs, therefore understanding MithrilJS first is suggested. The `autoForm` function itself only contains of less than 150 lines of code, intededly made simple so you can freely modify this function.
 
 ## Usage Example
-
-    m(autoForm({
-      id: 'testForm',
-      action: console.log,
-      schema: {
-        name: {type: String},
-        age: {type: Number},
-        dob: {type: Date, label: 'Date of birth'}
-      },
-      submit: {value: 'Save', class: 'is-success'}
-    }))
+```js
+m(autoForm({
+  id: 'testForm',
+  action: console.log,
+  schema: {
+    name: {type: String},
+    age: {type: Number},
+    dob: {type: Date, label: 'Date of birth'}
+  },
+  submit: {value: 'Save', class: 'is-success'}
+}))
+```
 This code will generate a form with `name` field in text and `number` field in number
 
 ## Code structure
@@ -46,47 +47,48 @@ This code will generate a form with `name` field in text and `number` field in n
 ### Schema rules
 A schema-object is an object of key:value pairs where the key represents the fieldName and the value represents the schema.
 The list below shall demonstrate various examples of schema you can define:
-
-    name: {type: String},
-    age: {type: Number},
-    birth: {type: Date},
-    address: {type: String, label: 'Home Adress'},
-    mobile: {type: Number, optional: true},
-    gender: {
-      type: String, autoRedraw: true,
-      autoform: {type: 'select', options: function(){return [
-        {value: 'male', label: 'Male'},
-        {value: 'female', label: 'Female'}
-      ]}}
-    },
-    occupation: {type: Number, optional: true, autoform: {
-      type: 'select', options: function(name, doc){
-        return ['student', 'freelance', 'professional'].map(function(val, index){
-          return {value: index, label: val}
-        })
-      }
-    }},
-    country_id: {type: String, regExp: '[A-Za-z]{3}'},
-    work_experience: {type: Object},
-    'work_experience.company': {type: String, label: 'Company Name'},
-    'work_experience.years': {type: Number, label: 'Years of experience'},
-    skills: {type: Array},
-    'skills.$': {type: String},
-    education: {type: Array},
-    'education.$': {type: Object},
-    'education.$.name': {type: String, label: 'School/University Name'},
-    'education.$.date': {type: Date, label: 'Graduation date'},
-    excluded: {type: String, exclude: true},
-    just_info: {
-      type: String,
-      autoform: {type: 'readonly'},
-      autoValue: function(name, doc){return name}
-    },
-    hidden_field: {
-      type: String,
-      autoform: {type: 'hidden'},
-      autoValue: function(){return 'something'}
-    },
+```js
+name: {type: String},
+age: {type: Number},
+birth: {type: Date},
+address: {type: String, label: 'Home Adress'},
+mobile: {type: Number, optional: true},
+gender: {
+  type: String, autoRedraw: true,
+  autoform: {type: 'select', options: function(){return [
+    {value: 'male', label: 'Male'},
+    {value: 'female', label: 'Female'}
+  ]}}
+},
+occupation: {type: Number, optional: true, autoform: {
+  type: 'select', options: function(name, doc){
+    return ['student', 'freelance', 'professional'].map(function(val, index){
+      return {value: index, label: val}
+    })
+  }
+}},
+country_id: {type: String, regExp: '[A-Za-z]{3}'},
+work_experience: {type: Object},
+'work_experience.company': {type: String, label: 'Company Name'},
+'work_experience.years': {type: Number, label: 'Years of experience'},
+skills: {type: Array},
+'skills.$': {type: String},
+education: {type: Array},
+'education.$': {type: Object},
+'education.$.name': {type: String, label: 'School/University Name'},
+'education.$.date': {type: Date, label: 'Graduation date'},
+excluded: {type: String, exclude: true},
+just_info: {
+  type: String,
+  autoform: {type: 'readonly'},
+  autoValue: function(name, doc){return name}
+},
+hidden_field: {
+  type: String,
+  autoform: {type: 'hidden'},
+  autoValue: function(){return 'something'}
+},
+```
 ### Schema Descriptions
 `type`: Data type you want the field to be filled with. Supported types are `String`, `Number`, `Date`, `Object`, `Array`. The following details are:
 - `String`: Accepts text value as is.
@@ -121,6 +123,7 @@ The list below shall demonstrate various examples of schema you can define:
 - MithrilJS: Chosen for it's simplicity and versatility to build vDom based SPA over React or Vue.
 - Bulma CSS: A css framework that includes no javascript.
 - Lodash FP: Developers utility belt.
+
 All dependencies for this project are served through CDNs. If you don't use Google App Script, you may include the libraries by npm or anything else.
 
 ## Further Development

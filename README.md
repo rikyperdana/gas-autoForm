@@ -31,7 +31,7 @@ This code will generate a form with `name` field in text and `number` field in n
 
 `Javascript.html`: Contains mithril instance that renders virtual doms for the page.
 
-`autoForm`: Contains autoForm function that take options for generating the form.
+`autoForm.html`: Contains autoForm function that take options for generating the form.
 
 ## APIs
 ### Form options
@@ -117,9 +117,15 @@ The list below shall demonstrate various examples of schema you can define:
 
 `autoRedraw`: Accepts Boolean value that determine `redraw()` behavior of MithrilJS upon respective field `onchange` lifecycle. Useful when you want to redraw the whole form DOM as information changes.
 
+## Dependencies
+- MithrilJS: Chosen for it's simplicity and versatility to build vDom based SPA over React or Vue.
+- Bulma CSS: A css framework that includes no javascript.
+- Lodash FP: Developers utility belt.
+All dependencies for this project are served through CDNs. If you don't use Google App Script, you may include the libraries by npm or anything else.
+
 ## Further Development
 - File input field, along with selected file information.
 
 ## Caveat & Known Issues
-- Radio and Checkboxes are intetionally left excluded as jQuery is necessary to capture their values.
-- MithrilJS `redraw()` nature is to re-render the whole page at each execution. Thus `redraw()` execution outside the form element shall affect the form as well.
+- Radios and Checkboxes are intetionally left unfeatured as jQuery or the likes are necessary to capture their values.
+- MithrilJS `redraw()` nature is to re-render the whole page at each lifecycle. Thus, `redraw()` execution outside the form element shall affect the form as well.

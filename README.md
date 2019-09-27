@@ -83,7 +83,7 @@ The list below shall demonstrate various examples of schema you can define:
       autoform: {type: 'hidden'},
       autoValue: function(){return 'something'}
     }
-
+### Schema Descriptions
 `type`: Data type you want the field to be filled with. Supported types are `String`, `Number`, `Date`, `Object`, `Array`.
 
 `label`: Text you want to put as the label right above respective field.

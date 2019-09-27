@@ -49,9 +49,13 @@ The list below shall demonstrate various examples of schema you can define:
     birth: {type: Date},
     address: {type: String, label: 'Home Adress'},
     mobile: {type: Number, optional: true},
-    gender: {type: String, autoform: {type: 'select', options: function(){return [
-      {value: 'male', label: 'Male'}, {value: 'female', label: 'Female'}
-    ]}}},
+    gender: {
+      type: String, autoRedraw: true,
+      autoform: {type: 'select', options: function(){return [
+        {value: 'male', label: 'Male'},
+        {value: 'female', label: 'Female'}
+      ]}}
+    },
     occupation: {type: Number, optional: true, autoform: {
       type: 'select', options: function(name, doc){
         return ['student', 'freelance', 'professional'].map(function(val, index){
@@ -71,7 +75,7 @@ The list below shall demonstrate various examples of schema you can define:
     excluded: {type: String, exclude: true},
     just_info: {
       type: String,
-      autoform: {type: 'hidden'},
+      autoform: {type: 'readonly'},
       autoValue: function(name, doc){return name}
     },
     hidden_field: {
@@ -79,6 +83,28 @@ The list below shall demonstrate various examples of schema you can define:
       autoform: {type: 'hidden'},
       autoValue: function(){return 'something'}
     }
+
+`type`: Data type you want the field to be filled with. Supported types are `String`, `Number`, `Date`, `Object`, `Array`.
+
+`label`: Text you want to put as the label right above respective field.
+
+`optional`: Make the field optional. The submission will succeed either the field has value or not. A non-optional field will be marked with red colored asterix next to the label.
+
+`exclude`: Accepts Boolean value that represents the field value is to be included upon submission or not.
+
+`autoform`: A property to contain form-specific options which may contain below properties.
+
+`autoform.type`: Type of field you want the field to appear as. The variations are: `select`, `textarea`, `readonly`, `hidden`, and more in the future. The following details are:
+- `select`: display a selection field with custom value and label.
+- `textarea`: display a widened field for long text.
+- `readonly`: display a pre-filled field with customizable value.
+- `hidden`: display nothing on the page, yet retains the determined value upon submission.
+
+`autoform.options`: If `autoform: {type: 'select'}` is used, return a function that return an array that contains `value` and `label` properties. Two callbacks are provided `(name, doc)` to help customization.
+
+`autoValue`: A function that accepts `(name, doc)` as callbacks where `name` is the respective field name and `doc` are the current values of given form.
+
+`autoRedraw`: Accepts Boolean value that determine `redraw()` behavior of MithrilJS upon respective field `onchange` lifecycle. Useful when you want to redraw the whole form DOM as information changes.
 
 ## Further Dev
 

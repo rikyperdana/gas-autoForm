@@ -31,7 +31,7 @@ function autoForm(opts){return {view: function(){
         }}).reduce(function(res, inc){
           return _.merge(res, inc)
         }, {})
-      )}
+      ); if(opts.autoReset){afState.form[opts.id] = null}}
     },
     arrLen: function(name, type){return {onclick: function(){
       if(!afState.arrLen[name]){afState.arrLen[name] = 0};
@@ -117,8 +117,7 @@ function autoForm(opts){return {view: function(){
           step: 'any', name: !schema.exclude ? name : '',
           placeholder: _.get(schema, 'autoform.placeholder'),
           value: _.get(afState.form, [opts.id, name]),
-          required: !schema.optional,
-          pattern: schema.regExp,
+          required: !schema.optional, pattern: schema.regExp,
           onchange: schema.autoRedraw && function(){},
           type: [
             [String, 'text'],
@@ -139,11 +138,9 @@ function autoForm(opts){return {view: function(){
         [_.get(val, 'autoform.type') || 'standard']()
       }
     }),
-    m('.row', m('input.button', {
-      type: 'submit',
-      class: _.get(opts, 'submit.class') || 'is-primary',
-      value: _.get(opts, 'submit.value') || 'Submit'
-    }))
+    m('.row', m('input.button', _.merge({
+      type: 'submit', value: 'Submit', class: 'is-primary'
+    }, opts.submit)))
   )
 }}}
 </script>

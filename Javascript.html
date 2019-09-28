@@ -3,13 +3,14 @@
 m.mount(document.body, {view: function(){
   return m('.container', m(autoForm({
     id: 'insertContact',
-    submit: {value: 'Insert', class: 'is-primary'},
     action: console.log,
     schema: {
       name: {type: String},
       age: {type: Number},
       birth: {type: Date},
-    }
+    },
+    submit: {value: 'Save', class: 'is-info'},
+    autoReset: true
   })))
 }});
 

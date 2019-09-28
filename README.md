@@ -35,15 +35,16 @@ m(autoForm({
 
 ## APIs
 ### Form options
-`id` : (required) Name of the form to be created. Ex: 'myForm'
+#### Required
+`id` : Name of the form to be created. Ex: 'myForm'
 
-`action` : (required) A function which shall be called after form submission with a callback. Ex: `function(res){return res}`
+`action` : A function which shall be called after form submission with a callback. Ex: `function(res){return res}`
 
-`schema` : (required) A schema-like object that shares similiarity to meteor autoform library as explained in below section.
+`schema` : A schema-like object that shares similiarity to meteor autoform library as explained in below section.
+#### Optional
+`submit`: An object that may contain `value` and `class` property to style the submit button.
 
-`submit`: (optional) An object that may contain `value` and `class` property to style the submit button.
-
-`autoReset`: (optional) A boolean value to reset the form content after submission or not. The default is `false`.
+`autoReset`: A boolean value to reset the form content after submission or not. The default is `false`.
 
 ### Schema rules
 A schema-object is an object of key:value pairs where the key represents the fieldName and the value represents the schema.

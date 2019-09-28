@@ -23,7 +23,6 @@ m(autoForm({
   submit: {value: 'Save', class: 'is-success'}
 }))
 ```
-This code will generate a form with `name` field in text and `number` field in number
 
 ## Code structure
 `Code.gs` : A server-side code which include `lodash`, `doGet`, and `include` function.
@@ -43,6 +42,8 @@ This code will generate a form with `name` field in text and `number` field in n
 `schema` : (required) A schema-like object that shares similiarity to meteor autoform library as explained in below section.
 
 `submit`: (optional) An object that may contain `value` and `class` property to style the submit button.
+
+`autoReset`: (optional) A boolean value to reset the form content after submission or not. The default is `false`.
 
 ### Schema rules
 A schema-object is an object of key:value pairs where the key represents the fieldName and the value represents the schema.

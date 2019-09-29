@@ -91,8 +91,10 @@ function autoForm(opts){return {view: function(){
             getLen(name)+1 === getLen(i.name)
           ])
         }).map(function(i){
-          return inputTypes(i.name, opts.schema[i.name])
-          [_.get(schema, 'autoform.type') || 'standard']()
+          return inputTypes(
+            name+'.'+_.last(i.name.split('.')),
+            opts.schema[i.name]
+          )[_.get(schema, 'autoform.type') || 'standard']()
         }),
         m('p.help', _.get(schema, 'autoform.help'))
       )}

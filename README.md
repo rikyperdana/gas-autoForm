@@ -1,7 +1,7 @@
 # AutoForm for Google App Script
 
 [Script source code](https://script.google.com/d/1j2sCmpdtfmScueHcaxm2LtOk4ZJir_q5WEtGCYRjjYWQCpZZfD-GBwhr/edit?usp=sharing)
-File > Make a copy, then modify and publish one yourself.
+File > Make a copy, then modify and publish one yourself. And here is the result [example](https://script.google.com/macros/s/AKfycbxov1MCWd_wIUJnOpMLBkSEnjiJvKw0-G-BrOdP0Q/exec)
 
 If you work on other platforms that uses JS, you can copy the whole autoForm function and it will just work.
 

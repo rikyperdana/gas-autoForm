@@ -5,11 +5,11 @@ m.mount(document.body, {view: function(){
     id: 'insertContact',
     action: console.log,
     schema: {
-      first: {type: Array},
-      'first.$': {type: Object},
-      'first.$.second': {type: Array},
-      'first.$.second.$': {type: Object},
-      'first.$.second.$.third': {type: String}
+      array: {type: Array},
+      'array.$': {type: String}
+//      name: {type: String},
+//      favorite_number: {type: Number, optional: true},
+//      dob: {type: Date, label: 'Date of birth'}
     },
     submit: {value: 'Save', class: 'is-info'},
     autoReset: true

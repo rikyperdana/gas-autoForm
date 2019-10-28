@@ -1,7 +1,7 @@
 # AutoForm for Google App Script
 
 [Script source code](https://script.google.com/d/1j2sCmpdtfmScueHcaxm2LtOk4ZJir_q5WEtGCYRjjYWQCpZZfD-GBwhr/edit?usp=sharing)
-File > Make a copy, then modify and publish one yourself.
+File > Make a copy, then modify and publish one yourself. And here is the result [example](https://script.google.com/macros/s/AKfycbxov1MCWd_wIUJnOpMLBkSEnjiJvKw0-G-BrOdP0Q/exec)
 
 If you work on other platforms that uses JS, you can copy the whole autoForm function and it will just work.
 
@@ -51,7 +51,7 @@ A schema-object is an object of key:value pairs where the key represents the fie
 The list below shall demonstrate various examples of schema you can define:
 ```js
 name: {type: String},
-age: {type: Number},
+age: {type: Number, minMax: function(){return [18, 65]}},
 birth: {type: Date},
 address: {type: String, label: 'Home Adress'},
 mobile: {type: Number, optional: true},
@@ -102,6 +102,8 @@ hidden_field: {
 `label`: Text you want to put as the label right above respective field.
 
 `optional`: Make the field optional. The submission will succeed either the field has value or not. A non-optional field will be marked with red colored asterix next to the label.
+
+`minMax`: If the type is Number or Date, you can set the minimum and maximum value for the field. Ex: `function(name, doc){return ['2019-09-30', '2020-10-01']}`
 
 `exclude`: Accepts Boolean value that represents the field value is to be included upon submission or not.
 
